@@ -1,0 +1,538 @@
+/* Estilos generales */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #1c1e21;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+p {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #606770;
+}
+
+/* Estilos del formulario */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dddfe2;
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #1877f2; /* Azul de Facebook */
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+    background-color: #166fe5;
+}
+
+/* Estilos del contenedor de resultados */
+.results {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #f7f8fa;
+    border: 1px solid #dddfe2;
+    border-radius: 8px;
+}
+
+.results h2 {
+    color: #1c1e21;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.mejor-opcion {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.mejor-opcion p {
+    margin: 0;
+    font-size: 18px;
+    color: #606770;
+}
+
+.mejor-opcion .metodo {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c9c31; /* Un verde para destacar */
+    margin: 5px 0;
+}
+
+.mejor-opcion .costo {
+    display: block;
+    font-size: 32px;
+    font-weight: bold;
+    color: #1c1e21;
+}
+
+.results h3 {
+    text-align: center;
+    color: #606770;
+    font-size: 16px;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+.results ul {
+    list-style: none;
+    padding: 0;
+}
+
+.results ul li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+.results ul li:nth-child(odd) {
+    background-color: #e9ebee;
+}
+
+/* --- AÑADIR ESTO AL FINAL DE TU ARCHIVO estilos.css --- */
+
+.tabla-container {
+    margin-top: 25px;
+}
+
+.tabla-container h3 {
+    text-align: center;
+    color: #606770;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.tabla-resultados {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+}
+
+.tabla-resultados th, .tabla-resultados td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #dddfe2;
+}
+
+.tabla-resultados td:last-child {
+    text-align: right;
+    font-weight: 600;
+}
+
+.tabla-resultados thead th {
+    background-color: #f0f2f5;
+    color: #606770;
+    font-weight: bold;
+}
+
+.tabla-resultados tbody tr:last-child th,
+.tabla-resultados tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.tabla-resultados tfoot td {
+    border-top: 2px solid #1c1e21;
+    color: #1c1e21;
+    font-size: 16px;
+}
+
+/* Ajustamos la antigua lista de comparativa para que use la nueva tabla */
+.results ul {
+    display: none; /* Ocultamos la lista vieja */
+    
+    /* --- AÑADIR ESTO AL FINAL DE TU ARCHIVO estilos.css --- */
+
+/* Estilos para la sección de Precio de Venta Destacado */
+.pvp-destacado {
+    text-align: center;
+    padding: 25px;
+    background-color: #e7f3ff; /* Azul muy claro */
+    border: 1px solid #1877f2;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+.pvp-destacado p {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1877f2;
+}
+.pvp-destacado .metodo-pvp {
+    display: block;
+    font-size: 16px;
+    color: #606770;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.pvp-destacado .precio-pvp {
+    display: block;
+    font-size: 48px;
+    font-weight: bold;
+    color: #1c1e21;
+    line-height: 1.1;
+}
+
+/* Estilos para hacer la tabla de PVP secundario más sutil */
+.tabla-pvp-secundario td {
+    font-size: 14px;
+}
+.tabla-pvp-secundario td:last-child {
+    font-weight: normal;
+}
+
+/* Contenedor para la sección de análisis de costos */
+.analisis-costos {
+    margin-top: 40px;
+    border-top: 1px solid #dddfe2;
+    padding-top: 20px;
+}
+.analisis-costos h2 {
+    text-align: center;
+    color: #1c1e21;
+    margin-bottom: 20px;
+}
+
+/* Estilos para cada tabla de desglose individual */
+.desglose-container {
+    background-color: #f7f8fa;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #e9ebee;
+}
+.desglose-container h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+.desglose-container .tabla-resultados td {
+    font-size: 14px;
+}
+}
+
+/* --- AÑADIR ESTO AL FINAL DE TU ARCHIVO estilos.css --- */
+
+/* Estilos para la nueva tabla de análisis detallado */
+.tabla-analisis-detallado {
+    font-size: 13px; /* Reducimos un poco el tamaño para que quepa */
+}
+
+.tabla-analisis-detallado th, .tabla-analisis-detallado td {
+    padding: 10px 8px;
+    white-space: nowrap; /* Evita que el texto se parta en dos líneas */
+}
+
+.tabla-analisis-detallado th {
+    background-color: #e9ebee;
+}
+
+/* Alineación de columnas numéricas a la derecha */
+.tabla-analisis-detallado th:not(:first-child),
+.tabla-analisis-detallado td:not(:first-child) {
+    text-align: right;
+}
+
+.tabla-analisis-detallado tfoot {
+    font-weight: bold;
+    color: #1c1e21;
+    border-top: 2px solid #dddfe2;
+}
+
+/* Efecto para destacar la tabla de la mejor opción */
+.mejor-opcion-glow {
+    box-shadow: 0 0 15px rgba(24, 119, 242, 0.4);
+    border-color: #1877f2;
+}
+
+/* --- AÑADIR ESTO AL FINAL DE TU ARCHIVO estilos.css --- */
+
+/* Estilos para la nueva sección de Listado de Materiales */
+.listado-materiales {
+    background-color: #f7f8fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    border: 1px solid #dddfe2;
+}
+.listado-materiales h3 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #1c1e21;
+}
+
+/* Estilo para la cantidad en el desglose (ej: (4 planchas)) */
+.tabla-analisis-detallado small {
+    display: block;
+    font-size: 12px;
+    color: #606770;
+    font-weight: normal;
+}
+
+/* Ajuste a la tabla de análisis para que sea más simple */
+.tabla-analisis-detallado th:nth-child(2),
+.tabla-analisis-detallado td:nth-child(2),
+.tabla-analisis-detallado th:nth-child(3),
+.tabla-analisis-detallado td:nth-child(3) {
+    text-align: right;
+}
+
+/* Agregar al final de estilos.css */
+
+/* Estilos para mensajes de error */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+}
+
+.alert-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.alert ul {
+    margin: 10px 0 0 0;
+    padding-left: 20px;
+}
+
+.alert li {
+    margin-bottom: 5px;
+}
+
+/* Mejorar responsive */
+@media (max-width: 768px) {
+    .container {
+        margin: 10px;
+        padding: 15px;
+    }
+    
+    .tabla-analisis-detallado {
+        font-size: 12px;
+    }
+    
+    .tabla-analisis-detallado th, 
+    .tabla-analisis-detallado td {
+        padding: 8px 5px;
+    }
+}
+
+/* Estilos para mensajes de error */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+}
+
+.alert-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.alert ul {
+    margin: 10px 0 0 0;
+    padding-left: 20px;
+}
+
+.alert li {
+    margin-bottom: 5px;
+}
+
+/* Mejorar responsive */
+@media (max-width: 768px) {
+    .container {
+        margin: 10px;
+        padding: 15px;
+    }
+    
+    .tabla-analisis-detallado {
+        font-size: 12px;
+    }
+    
+    .tabla-analisis-detallado th, 
+    .tabla-analisis-detallado td {
+        padding: 8px 5px;
+    }
+}
+
+/* Estilos para panel administrativo */
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.admin-nav {
+    background: #f8f9fa;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.admin-nav a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: 500;
+}
+
+.admin-nav a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.parametro-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    border-bottom: 1px solid #e9ecef;
+    transition: background-color 0.2s;
+}
+
+.parametro-group:hover {
+    background-color: #f8f9fa;
+}
+
+.parametro-info {
+    flex: 2;
+}
+
+.parametro-input {
+    flex: 1;
+    max-width: 200px;
+}
+
+.parametro-input input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* ===== MEJORAS DE UX PARA FASE 3 ===== */
+
+/* Selector de productos */
+.form-group small {
+    display: block;
+    margin-top: 5px;
+    color: #666;
+    font-size: 12px;
+}
+
+/* Mejoras en la tabla de productos */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+table th {
+    background: #f8f9fa;
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid #dee2e6;
+}
+
+table td {
+    padding: 12px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+table tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Botones de acción */
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.btn-primary { background: #007bff; color: white; }
+.btn-success { background: #28a745; color: white; }
+.btn-danger { background: #dc3545; color: white; }
+.btn-warning { background: #ffc107; color: #212529; }
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+/* Responsive mejorado */
+@media (max-width: 768px) {
+    .seccion-parametros form {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .admin-nav a {
+        display: block;
+        margin: 5px 0;
+        padding: 10px;
+        background: white;
+        border-radius: 4px;
+    }
+}
