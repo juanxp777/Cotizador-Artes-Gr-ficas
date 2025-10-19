@@ -1,7 +1,9 @@
 <?php
 require_once __DIR__ . '/../../bootstrap.php';
-use function App\Helpers\admin_logout;
 
-admin_logout();
+use App\Services\Auth;
+
+$auth = new Auth(db());
+$auth->logout();
 header('Location: /public/admin/login.php');
 exit;

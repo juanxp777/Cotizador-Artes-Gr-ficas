@@ -1,30 +1,40 @@
 <?php
 require_once __DIR__ . '/../../bootstrap.php';
 
-use function App\Helpers\{admin_login, admin_logged_in, flash_set, flash_get};
+use App\Services\Auth;
+
 start_secure_session();
 require_csrf_if_post();
 
-// Si ya está logueado, redirige al panel
-if (admin_logged_in()) {
+$auth = new Auth(db());
+
+if ($auth->check()) {
+    // Si debe cambiar password, vete a change_password
+    $u = $auth->current();
+    if (!empty($u['must_change_pass'])) {
+        header('Location: /public/admin/change_password.php');
+        exit;
+    }
     header('Location: /public/admin/parametros.php');
     exit;
 }
 
 $error = null;
 if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
-    $user = $_POST['user'] ?? '';
+    $user = trim($_POST['user'] ?? '');
     $pass = $_POST['pass'] ?? '';
-    if (admin_login($user, $pass)) {
-        header('Location: /public/admin/parametros.php');
+    if ($auth->login($user, $pass)) {
+        $u = $auth->current();
+        if (!empty($u['must_change_pass'])) {
+            header('Location: /public/admin/change_password.php');
+        } else {
+            header('Location: /public/admin/parametros.php');
+        }
         exit;
     } else {
-        $error = 'Usuario o contraseña inválidos';
-        flash_set('error', $error);
+        $error = 'Usuario o contraseña inválidos, o usuario inactivo.';
     }
 }
-
-$flashes = flash_get();
 ?><!doctype html>
 <html lang="es">
 <head>
@@ -36,13 +46,11 @@ $flashes = flash_get();
   <div class="min-h-screen grid place-items-center p-6">
     <div class="w-full max-w-md bg-white rounded-2xl shadow p-6">
       <h1 class="text-2xl font-semibold mb-2">Panel Administrativo</h1>
-      <p class="text-sm text-gray-600 mb-4">Inicia sesión para gestionar parámetros.</p>
+      <p class="text-sm text-gray-600 mb-4">Inicia sesión con tu usuario.</p>
 
-      <?php foreach ($flashes as $f): ?>
-        <div class="mb-3 text-sm px-3 py-2 rounded <?= $f['type']==='error'?'bg-red-50 text-red-700':'bg-green-50 text-green-700' ?>">
-          <?= htmlspecialchars($f['msg']) ?>
-        </div>
-      <?php endforeach; ?>
+      <?php if ($error): ?>
+        <div class="mb-3 text-sm px-3 py-2 rounded bg-red-50 text-red-700"><?= htmlspecialchars($error) ?></div>
+      <?php endif; ?>
 
       <form method="POST" class="space-y-3">
         <input type="hidden" name="csrf" value="<?= htmlspecialchars(csrf_token()) ?>">
@@ -56,10 +64,7 @@ $flashes = flash_get();
         </div>
         <button class="w-full bg-black text-white rounded-lg py-2 hover:opacity-90">Entrar</button>
       </form>
-
-      <p class="text-xs text-gray-500 mt-4">
-        Configura credenciales en <code>ADMIN_USER</code> y <code>ADMIN_PASS_HASH</code> (o temporalmente <code>ADMIN_PASS</code>) en tu <em>.env.local.php</em>.
-      </p>
+      <p class="text-xs text-gray-500 mt-4">Si es tu primer ingreso, el admin te dará una contraseña temporal.</p>
     </div>
   </div>
 </body>
